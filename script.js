@@ -9,6 +9,7 @@ $(document).ready(function() {
     // PROMINENT PARTICLE CANVAS
     // High-density, interactive particles
     // ========================================
+    
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -448,7 +449,88 @@ $(document).ready(function() {
             }, 4000);
         }, 300);
     }
-    
+    const simulateBtn = document.querySelector(".btn-primary");
+const policyInput = document.querySelector(".demo-input textarea");
+const outputBody = document.querySelector(".output-body");
+
+simulateBtn.addEventListener("click", () => {
+    const policy = policyInput.value.trim();
+
+    if (!policy) {
+        outputBody.innerHTML = `
+            <p class="error-message">
+                ERROR: No policy directive detected.
+            </p>
+        `;
+        return;
+    }
+
+    let result = "";
+
+    const lowerPolicy = policy.toLowerCase();
+
+    if (
+        lowerPolicy.includes("carbon") ||
+        lowerPolicy.includes("climate") ||
+        lowerPolicy.includes("renewable")
+    ) {
+        result = `
+            <div class="simulation-result">
+                <h3>CLIMATE POLICY ANALYSIS</h3>
+                <p>Projected emissions reduction: <span class="positive">-18%</span></p>
+                <p>Economic transition cost: <span class="warning">Moderate</span></p>
+                <p>Long-term sustainability index: <span class="positive">+27%</span></p>
+                <p>Risk factor detected: Industrial resistance in fossil-fuel sectors.</p>
+            </div>
+        `;
+    }
+
+    else if (
+        lowerPolicy.includes("tax") ||
+        lowerPolicy.includes("economy") ||
+        lowerPolicy.includes("trade")
+    ) {
+        result = `
+            <div class="simulation-result">
+                <h3>ECONOMIC MODEL OUTPUT</h3>
+                <p>GDP impact forecast: <span class="positive">+2.4%</span></p>
+                <p>Employment volatility: <span class="warning">Medium</span></p>
+                <p>Consumer market stability: <span class="positive">Stable</span></p>
+                <p>Detected side effect: Inflation spike probability increased by 11%.</p>
+            </div>
+        `;
+    }
+
+    else if (
+        lowerPolicy.includes("education") ||
+        lowerPolicy.includes("health") ||
+        lowerPolicy.includes("social")
+    ) {
+        result = `
+            <div class="simulation-result">
+                <h3>SOCIAL DYNAMICS ANALYSIS</h3>
+                <p>Public approval prediction: <span class="positive">78%</span></p>
+                <p>Accessibility increase: <span class="positive">High</span></p>
+                <p>Infrastructure strain: <span class="warning">Moderate</span></p>
+                <p>Long-term equity projection improved across lower-income groups.</p>
+            </div>
+        `;
+    }
+
+    else {
+        result = `
+            <div class="simulation-result">
+                <h3>GENERAL POLICY FORECAST</h3>
+                <p>Neural core processed submitted directive.</p>
+                <p>Cross-domain impacts detected across economic and social systems.</p>
+                <p>Prediction confidence: <span class="positive">91.2%</span></p>
+                <p>Recommendation: Run deeper Monte Carlo scenario analysis.</p>
+            </div>
+        `;
+    }
+
+    outputBody.innerHTML = result;
+});
     // Add the animation styles
     $('<style>')
         .prop('type', 'text/css')

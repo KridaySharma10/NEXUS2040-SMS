@@ -25,7 +25,32 @@
     padding: 0;
     box-sizing: border-box;
 }
+.simulation-result h3 {
+    color: var(--cyan);
+    margin-bottom: 1rem;
+    font-family: 'Orbitron', sans-serif;
+}
 
+.simulation-result p {
+    margin-bottom: 0.7rem;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.positive {
+    color: var(--green);
+    font-weight: bold;
+}
+
+.warning {
+    color: var(--orange);
+    font-weight: bold;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-family: 'Share Tech Mono', monospace;
+}
 html {
     scroll-behavior: smooth;
 }
